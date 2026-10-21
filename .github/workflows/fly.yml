@@ -1,0 +1,29 @@
+# Despliegue manual en Fly.io desde GitHub (Actions → Desplegar en Fly.io → Run
+# workflow). No corre en cada push porque la app ya se despliega sola desde el
+# panel de Fly; dos despliegues a la vez chocan («failed to get lease on VM»).
+# Necesita el secreto FLY_API_TOKEN en GitHub; sin él no hace nada.
+name: Desplegar en Fly.io
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: fly-despliegue
+  cancel-in-progress: false
+
+jobs:
+  desplegar:
+    runs-on: ubuntu-latest
+    env:
+      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        if: env.FLY_API_TOKEN != ''
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+        if: env.FLY_API_TOKEN != ''
+      - name: Desplegar
+        if: env.FLY_API_TOKEN != ''
+        run: flyctl deploy --remote-only
+      - name: Sin token
+        if: env.FLY_API_TOKEN == ''
+        run: echo "No hay secreto FLY_API_TOKEN; no se despliega en Fly.io."

@@ -1,0 +1,33 @@
+# Fly.io: la interfaz y la API en una sola máquina, desde el Dockerfile.
+# Cambie `app` por un nombre libre (o use `fly launch --copy-config --no-deploy`)
+# y `primary_region` por la región más cercana (`fly platform regions`).
+app = "erp-pro"
+primary_region = "ams"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+  FORWARDED_ALLOW_IPS = "*"
+  # Agrega las magnitudes y unidades sugeridas que falten (no duplica ni pisa nada)
+  CARGAR_CONFIG_BASE = "1"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  # Se apaga sin tráfico y se enciende con la primera petición (más barato)
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    grace_period = "30s"
+    interval = "30s"
+    timeout = "5s"
+    method = "GET"
+    path = "/api/salud"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "1gb"
