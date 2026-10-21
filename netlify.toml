@@ -1,0 +1,23 @@
+# Netlify publica solo la interfaz (Vue compilada). La API (FastAPI + PostgreSQL)
+# corre aparte, en Fly.io (fly.toml), y Netlify le reenvía las rutas /api/*:
+# el navegador sigue hablando con un solo dominio.
+# Si la API queda en otra dirección, cambie `to` en la primera regla.
+[build]
+  base = "frontend"
+  command = "npm ci --no-audit --no-fund && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://erp-pro.fly.dev/api/:splat"
+  status = 200
+  force = true
+
+# La aplicación decide la vista: cualquier otra ruta abre index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

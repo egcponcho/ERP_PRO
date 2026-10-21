@@ -80,6 +80,17 @@ fly deploy
 desplegar a mano desde GitHub (*Actions → Desplegar en Fly.io*) con el secreto `FLY_API_TOKEN`
 (`fly tokens create deploy -x 999999h`).
 
+## Interfaz en Netlify
+
+Netlify sirve archivos estáticos y funciones cortas: no puede correr la API (Python, FastAPI) ni la
+base PostgreSQL. Por eso `netlify.toml` publica solo la interfaz compilada (`frontend/dist`) y reenvía
+`/api/*` a la API desplegada en Fly.io (`https://erp-pro.fly.dev`). Si la API queda en otra
+dirección, cambie la primera regla de `netlify.toml`.
+
+1. Despliegue la API en Fly.io (sección anterior).
+2. En Netlify, con el sitio ya conectado al repositorio, no hace falta configurar nada: toma
+   `netlify.toml` en cada push a `main`.
+
 ## Pruebas
 
 ```bash
