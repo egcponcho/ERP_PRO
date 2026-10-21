@@ -1,0 +1,116 @@
+{
+  "_nota": "Magnitudes y unidades sugeridas. instalacion.py solo agrega las que falten (por código).",
+  "magnitudes": [
+    {
+      "codigo": "CANTIDAD",
+      "nombre": "Cantidad"
+    },
+    {
+      "codigo": "MASA",
+      "nombre": "Masa"
+    },
+    {
+      "codigo": "VOLUMEN",
+      "nombre": "Volumen"
+    },
+    {
+      "codigo": "LONGITUD",
+      "nombre": "Longitud"
+    }
+  ],
+  "unidades": [
+    {
+      "codigo": "UN",
+      "nombre": "Unidad",
+      "magnitud": "CANTIDAD",
+      "factor": 1,
+      "decimales": 0
+    },
+    {
+      "codigo": "PAR",
+      "nombre": "Par",
+      "magnitud": "CANTIDAD",
+      "factor": 2,
+      "decimales": 0
+    },
+    {
+      "codigo": "DOC",
+      "nombre": "Docena",
+      "magnitud": "CANTIDAD",
+      "factor": 12,
+      "decimales": 0
+    },
+    {
+      "codigo": "KG",
+      "nombre": "Kilogramo",
+      "simbolo": "kg",
+      "magnitud": "MASA",
+      "factor": 1,
+      "decimales": 3
+    },
+    {
+      "codigo": "G",
+      "nombre": "Gramo",
+      "simbolo": "g",
+      "magnitud": "MASA",
+      "factor": 0.001,
+      "decimales": 2
+    },
+    {
+      "codigo": "LB",
+      "nombre": "Libra",
+      "simbolo": "lb",
+      "magnitud": "MASA",
+      "factor": 0.45359237,
+      "decimales": 3
+    },
+    {
+      "codigo": "L",
+      "nombre": "Litro",
+      "simbolo": "L",
+      "magnitud": "VOLUMEN",
+      "factor": 1,
+      "decimales": 3
+    },
+    {
+      "codigo": "ML",
+      "nombre": "Mililitro",
+      "simbolo": "mL",
+      "magnitud": "VOLUMEN",
+      "factor": 0.001,
+      "decimales": 1
+    },
+    {
+      "codigo": "GAL",
+      "nombre": "Galón (EUA)",
+      "simbolo": "gal",
+      "magnitud": "VOLUMEN",
+      "factor": 3.785411784,
+      "decimales": 3
+    },
+    {
+      "codigo": "M",
+      "nombre": "Metro",
+      "simbolo": "m",
+      "magnitud": "LONGITUD",
+      "factor": 1,
+      "decimales": 3
+    },
+    {
+      "codigo": "CM",
+      "nombre": "Centímetro",
+      "simbolo": "cm",
+      "magnitud": "LONGITUD",
+      "factor": 0.01,
+      "decimales": 1
+    },
+    {
+      "codigo": "MM",
+      "nombre": "Milímetro",
+      "simbolo": "mm",
+      "magnitud": "LONGITUD",
+      "factor": 0.001,
+      "decimales": 0
+    }
+  ]
+}
